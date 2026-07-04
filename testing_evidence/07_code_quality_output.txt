@@ -1,0 +1,29 @@
+==== TEST 7: Code Quality Checks ====
+
+7.1. Format check (black)
+Warning: Python 3.14 cannot parse code formatted for Python 3.15. To fix this: run Black with Python 3.15, set --target-version to py314, or use --fast to skip the safety check. Black's safety check verifies equivalence by parsing the AST, which fails when the running Python is older than the target version.
+would reformat /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/utils/logger.py
+would reformat /Users/pankajaswal/Kubernetes-Cost-Optimizer/tests/test_prometheus_client.py
+would reformat /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/clients/kubernetes.py
+would reformat /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/promql/builder.py
+
+7.2. Import sorting (isort)
+ERROR: /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/cli.py Imports are incorrectly sorted and/or formatted.
+ERROR: /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/clients/prometheus.py Imports are incorrectly sorted and/or formatted.
+ERROR: /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/clients/kubernetes.py Imports are incorrectly sorted and/or formatted.
+ERROR: /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/utils/logger.py Imports are incorrectly sorted and/or formatted.
+ERROR: /Users/pankajaswal/Kubernetes-Cost-Optimizer/k8s_cost_optimizer/promql/builder.py Imports are incorrectly sorted and/or formatted.
+
+7.3. Linting (flake8)
+k8s_cost_optimizer/clients/prometheus.py:4:1: F401 'typing.Optional' imported but unused
+k8s_cost_optimizer/promql/builder.py:63:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:64:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:65:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:66:5: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:69:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:70:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:71:9: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:72:5: E122 continuation line missing indentation or outdented
+k8s_cost_optimizer/promql/builder.py:83:9: E122 continuation line missing indentation or outdented
+
+7.4. Security scan (bandit)

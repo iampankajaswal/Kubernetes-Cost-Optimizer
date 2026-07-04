@@ -1,0 +1,49 @@
+# Prometheus configuration for Kubernetes Cost Optimizer
+# Used by docker-compose.yml for local development/testing
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'docker-desktop'
+    environment: 'local'
+
+scrape_configs:
+  # Prometheus metrics itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Kubernetes API Server metrics (if running in K8s)
+  # Uncomment to enable if you have kube-apiserver metrics exposed
+  # - job_name: 'kubernetes-apiservers'
+  #   kubernetes_sd_configs:
+  #     - role: endpoints
+  #   scheme: https
+  #   tls_config:
+  #     ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+  #   bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+  #   relabel_configs:
+  #     - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+  #       action: keep
+  #       regex: default;kubernetes;https
+
+  # Node exporter metrics (if running locally)
+  # - job_name: 'node'
+  #   static_configs:
+  #     - targets: ['localhost:9100']
+
+  # Kubernetes metrics (for Docker Desktop)
+  # Requires kube-state-metrics to be running
+  # - job_name: 'kube-state-metrics'
+  #   static_configs:
+  #     - targets: ['localhost:8080']
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# For now, no rules are defined
+# Add alerting rules as needed
+rule_files: []

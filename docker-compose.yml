@@ -1,0 +1,56 @@
+services:
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: k8s-cost-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - k8s-cost-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Kubernetes Cost Optimizer
+  k8s-cost-optimizer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: k8s-cost-optimizer
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    environment:
+      KUBECONFIG: /home/optimizer/.kube/config
+      K8S_CLUSTER_NAME: docker-desktop
+      PROMETHEUS_URL: http://prometheus:9090
+      PROMETHEUS_TIMEOUT: 30
+      LOG_LEVEL: INFO
+      REPORT_OUTPUT_DIR: /reports
+    volumes:
+      # Mount local kubeconfig (for Docker Desktop)
+      - ~/.kube/config:/home/optimizer/.kube/config:ro
+      # Output reports to local machine
+      - ./reports:/reports
+    networks:
+      - k8s-cost-network
+    command: scan
+    # Keep container running for debugging
+    stdin_open: true
+    tty: true
+
+volumes:
+  prometheus_data:
+    driver: local
+
+networks:
+  k8s-cost-network:
+    driver: bridge

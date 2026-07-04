@@ -1,0 +1,18 @@
+==== TEST 4: Pytest Test Suite ====
+
+============================= test session starts ==============================
+platform darwin -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0 -- /Users/pankajaswal/Kubernetes-Cost-Optimizer/.venv/bin/python3.14
+cachedir: .pytest_cache
+rootdir: /Users/pankajaswal/Kubernetes-Cost-Optimizer
+configfile: pyproject.toml
+collecting ... collected 7 items
+
+tests/test_k8s.py::test_connect PASSED                                   [ 14%]
+tests/test_metrics_service.py::test_service_creation PASSED              [ 28%]
+tests/test_metrics_service.py::test_cpu_usage PASSED                     [ 42%]
+tests/test_metrics_service.py::test_memory_usage PASSED                  [ 57%]
+tests/test_prometheus_client.py::test_health PASSED                      [ 71%]
+tests/test_prometheus_client.py::test_up_query PASSED                    [ 85%]
+tests/test_promql_builder.py::test_cpu_query PASSED                      [100%]
+
+============================== 7 passed in 0.46s ===============================

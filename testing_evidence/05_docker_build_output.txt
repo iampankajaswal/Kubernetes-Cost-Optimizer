@@ -1,0 +1,7 @@
+==== TEST 5: Docker Build ====
+
+Building Docker image...
+
+Verifying image exists:
+IMAGE                     ID             DISK USAGE   CONTENT SIZE   EXTRA
+k8s-cost-optimizer:test   9cc7efc9e849        425MB             0B        

@@ -1,0 +1,36 @@
+==== TEST 2: Kubernetes Scan ====
+
+Running: k8s-cost scan
+
+
+Connecting to Kubernetes...
+✓ Connected
+
+    Cluster Summary     
+┏━━━━━━━━━━━━━━┳━━━━━━━┓
+┃ Resource     ┃ Count ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━┩
+│ Namespaces   │     9 │
+│ Nodes        │     1 │
+│ Deployments  │    18 │
+│ StatefulSets │     2 │
+│ DaemonSets   │     2 │
+│ Pods         │    29 │
+└──────────────┴───────┘
+
+Namespaces
+┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ Name             ┃ Status ┃
+┡━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+│ ai-observability │ Active │
+│ ai-sre           │ Active │
+│ argocd           │ Active │
+│ default          │ Active │
+│ k8sgpt           │ Active │
+│ kube-node-lease  │ Active │
+│ kube-public      │ Active │
+│ kube-system      │ Active │
+│ monitoring       │ Active │
+└──────────────────┴────────┘
+
+✓ Cluster discovery completed successfully.

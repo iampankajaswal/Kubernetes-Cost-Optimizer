@@ -2,8 +2,8 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from k8s_cost_optimizer.config import Config
 from k8s_cost_optimizer.clients.kubernetes import KubernetesClient
+from k8s_cost_optimizer.config import Config
 
 app = typer.Typer(help="Kubernetes Cost Optimizer")
 console = Console()

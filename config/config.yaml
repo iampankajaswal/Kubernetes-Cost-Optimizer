@@ -1,15 +1,27 @@
+# Kubernetes Cost Optimizer Configuration
+# All values can be overridden via environment variables
+# See .env.example for all available options
+
 cluster:
+  # Override via K8S_CLUSTER_NAME environment variable
   name: production
 
 kubernetes:
+  # Override via KUBECONFIG environment variable
+  # Defaults to ~/.kube/config or in-cluster config if running in K8s
   kubeconfig: ~/.kube/config
 
 prometheus:
+  # Override via PROMETHEUS_URL environment variable
   url: http://localhost:9090
+  # Override via PROMETHEUS_TIMEOUT environment variable
+  timeout: 30
 
 report:
+  # Override via REPORT_OUTPUT_DIR environment variable
   output: reports
 
-prometheus:
-  url: http://localhost:9090
-  timeout: 30
+logging:
+  # Override via LOG_LEVEL environment variable
+  level: INFO
+  format: text

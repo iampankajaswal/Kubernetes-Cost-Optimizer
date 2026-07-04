@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from .models import PromQLQuery
 from typing import Optional
+
+from .models import PromQLQuery
 
 
 @dataclass(slots=True)
@@ -60,16 +61,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     def cpu_average(
         self,
@@ -80,16 +81,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     def cpu_peak(
         self,
@@ -100,16 +101,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     # -----------------------------------------------------
     # Memory
@@ -118,21 +119,18 @@ class PromQLBuilder:
     def memory_usage(
         self,
         options: QueryOptions,
+        window: str = "5m",
     ) -> PromQLQuery:
 
         selector = self._selector(options)
 
-        query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+        query = "sum(" f"container_memory_usage_bytes{{{selector}}}" ")"
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="memory_usage",
+            description="Current memory usage in bytes",
+            expression=query,
+        )
 
     def memory_peak(
         self,
@@ -143,16 +141,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     # -----------------------------------------------------
     # Requests
@@ -166,16 +164,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     def memory_requests(
         self,
@@ -185,16 +183,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     # -----------------------------------------------------
     # Limits
@@ -208,16 +206,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     def memory_limits(
         self,
@@ -227,16 +225,16 @@ class PromQLBuilder:
         selector = self._selector(options)
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     # -----------------------------------------------------
     # Replica Count
@@ -249,16 +247,16 @@ class PromQLBuilder:
     ) -> PromQLQuery:
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     # -----------------------------------------------------
     # Pod Count
@@ -270,16 +268,16 @@ class PromQLBuilder:
     ) -> PromQLQuery:
 
         query = (
-        "sum("
-        f'rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])'
-        ")"
-    )
+            "sum("
+            f"rate(container_cpu_usage_seconds_total{{{selector}}}[{window}])"
+            ")"
+        )
 
         return PromQLQuery(
-        name="cpu_usage",
-        description="Current CPU usage",
-        expression=query,
-    )
+            name="cpu_usage",
+            description="Current CPU usage",
+            expression=query,
+        )
 
     def raw(
         self,

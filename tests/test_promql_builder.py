@@ -11,5 +11,6 @@ def test_cpu_query():
         )
     )
 
-    assert "container_cpu_usage_seconds_total" in query
-    assert 'namespace="default"' in query
+    assert "container_cpu_usage_seconds_total" in query.expression
+    assert 'namespace="default"' in query.expression
+    assert query.name == "cpu_usage"

@@ -5,10 +5,7 @@ from typing import Optional
 
 import requests
 
-from k8s_cost_optimizer.promql import (
-    PromQLQuery,
-    PrometheusResult,
-)
+from k8s_cost_optimizer.promql import PrometheusResult, PromQLQuery
 
 
 class PrometheusClient:

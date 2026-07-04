@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "==== TEST 3: Environment Variable Override ===="
+echo ""
+echo "3.1. Default PROMETHEUS_URL (from config.yaml)"
+k8s-cost show-config | grep -A1 "prometheus"
+echo ""
+echo "3.2. Override with environment variable"
+export PROMETHEUS_URL="http://custom-prometheus:9090"
+k8s-cost show-config | grep -A2 "prometheus"
+echo ""
+echo "3.3. Override K8S_CLUSTER_NAME"
+export K8S_CLUSTER_NAME="my-custom-cluster"
+k8s-cost show-config | grep -A1 "cluster"

@@ -1,0 +1,26 @@
+==== TEST 1: CLI Commands ====
+
+1.1. Version command
+Kubernetes Cost Optimizer
+Version: 0.1.0
+
+1.2. Show config command
+{
+    'cluster': {'name': 'production'},
+    'kubernetes': {'kubeconfig': '~/.kube/config'},
+    'prometheus': {'url': 'http://localhost:9090', 'timeout': 30},
+    'report': {'output': 'reports'},
+    'logging': {'version': 1, 'level': 'INFO'},
+    'pricing': {
+        'aws': {'cpu_core_month': 25.0, 'memory_gb_month': 4.0},
+        'buffer': {'cpu_percent': 20, 'memory_percent': 15}
+    }
+}
+
+1.3. Nodes command
+                             Nodes                              
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Name           ┃ OS             ┃ Kernel           ┃ Kubelet ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ docker-desktop │ Docker Desktop │ 6.12.72-linuxkit │ v1.34.1 │
+└────────────────┴────────────────┴──────────────────┴─────────┘

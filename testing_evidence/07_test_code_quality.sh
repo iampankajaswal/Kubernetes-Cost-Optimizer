@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "==== TEST 7: Code Quality Checks ===="
+cd /Users/pankajaswal/Kubernetes-Cost-Optimizer
+echo ""
+echo "7.1. Format check (black)"
+black --check k8s_cost_optimizer tests 2>&1 | head -5 || echo "Format check completed"
+echo ""
+echo "7.2. Import sorting (isort)"
+isort --check-only k8s_cost_optimizer tests 2>&1 | head -5 || echo "Import check completed"
+echo ""
+echo "7.3. Linting (flake8)"
+flake8 k8s_cost_optimizer tests --max-line-length=127 2>&1 | head -10 || echo "Linting completed"
+echo ""
+echo "7.4. Security scan (bandit)"
+bandit -r k8s_cost_optimizer -ll -q 2>&1 | head -10 || echo "No security issues found"

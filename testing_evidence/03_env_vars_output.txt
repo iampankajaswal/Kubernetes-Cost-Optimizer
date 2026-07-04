@@ -1,0 +1,14 @@
+==== TEST 3: Environment Variable Override ====
+
+3.1. Default PROMETHEUS_URL (from config.yaml)
+    'prometheus': {'url': 'http://localhost:9090', 'timeout': 30},
+    'report': {'output': 'reports'},
+
+3.2. Override with environment variable
+    'prometheus': {'url': 'http://custom-prometheus:9090', 'timeout': 30},
+    'report': {'output': 'reports'},
+    'logging': {'version': 1, 'level': 'INFO'},
+
+3.3. Override K8S_CLUSTER_NAME
+    'cluster': {'name': 'my-custom-cluster'},
+    'kubernetes': {'kubeconfig': '~/.kube/config'},

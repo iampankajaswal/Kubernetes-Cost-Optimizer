@@ -1,10 +1,8 @@
 from __future__ import annotations
 
 from k8s_cost_optimizer.clients.prometheus import PrometheusClient
-from k8s_cost_optimizer.promql import (
-    PromQLBuilder,
-    PrometheusResult,
-)
+from k8s_cost_optimizer.promql import (PrometheusResult, PromQLBuilder,
+                                       QueryOptions)
 
 
 class MetricsService:
@@ -24,10 +22,8 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.cpu_usage(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.cpu_usage(options=options)
         return self.client.execute(query)
 
     ##########################################################
@@ -37,10 +33,8 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.memory_usage(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.memory_usage(options=options)
         return self.client.execute(query)
 
     ##########################################################
@@ -50,10 +44,8 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.cpu_requests(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.cpu_requests(options=options)
         return self.client.execute(query)
 
     ##########################################################
@@ -63,10 +55,8 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.memory_requests(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.memory_requests(options=options)
         return self.client.execute(query)
 
     ##########################################################
@@ -76,10 +66,8 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.cpu_limits(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.cpu_limits(options=options)
         return self.client.execute(query)
 
     ##########################################################
@@ -89,8 +77,6 @@ class MetricsService:
         namespace: str,
     ) -> PrometheusResult:
 
-        query = self.builder.memory_limits(
-            namespace=namespace,
-        )
-
+        options = QueryOptions(namespace=namespace)
+        query = self.builder.memory_limits(options=options)
         return self.client.execute(query)

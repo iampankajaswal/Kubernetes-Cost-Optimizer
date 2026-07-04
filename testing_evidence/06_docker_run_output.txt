@@ -1,0 +1,22 @@
+==== TEST 6: Docker Run ====
+
+6.1. Run: docker run k8s-cost-optimizer:test version
+Kubernetes Cost Optimizer
+Version: 0.1.0
+
+6.2. Run: docker run k8s-cost-optimizer:test show-config
+{
+    'cluster': {'name': 'production'},
+    'kubernetes': {'kubeconfig': '~/.kube/config'},
+    'prometheus': {'url': 'http://prometheus:9090', 'timeout': 30},
+    'report': {'output': '/reports'},
+    'logging': {'version': 1, 'level': 'INFO'},
+    'pricing': {
+        'aws': {'cpu_core_month': 25.0, 'memory_gb_month': 4.0},
+        'buffer': {'cpu_percent': 20, 'memory_percent': 15}
+    }
+}
+
+6.3. Run with environment variable override
+    'prometheus': {'url': 'http://test:9090', 'timeout': 30},
+    'report': {'output': '/reports'},

@@ -5,8 +5,8 @@ from typing import List, Optional
 from kubernetes import client, config
 from kubernetes.config.config_exception import ConfigException
 
-from k8s_cost_optimizer.models.namespace import Namespace
 from k8s_cost_optimizer.models.deployment import Deployment
+from k8s_cost_optimizer.models.namespace import Namespace
 
 
 class KubernetesClient:
@@ -35,7 +35,6 @@ class KubernetesClient:
     ########################################################
 
     def connect(self):
-
         """
         Connect to Kubernetes using the local kubeconfig.
         If unavailable, fall back to in-cluster config.
@@ -205,6 +204,5 @@ class KubernetesClient:
         deployments = self.deployments()
 
         return any(
-            d.namespace == namespace and d.name == deployment
-            for d in deployments
+            d.namespace == namespace and d.name == deployment for d in deployments
         )
