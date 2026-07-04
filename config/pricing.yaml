@@ -1,0 +1,11 @@
+aws:
+
+  cpu_core_month: 25.00
+
+  memory_gb_month: 4.00
+
+buffer:
+
+  cpu_percent: 20
+
+  memory_percent: 15

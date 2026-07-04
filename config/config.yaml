@@ -1,0 +1,15 @@
+cluster:
+  name: production
+
+kubernetes:
+  kubeconfig: ~/.kube/config
+
+prometheus:
+  url: http://localhost:9090
+
+report:
+  output: reports
+
+prometheus:
+  url: http://localhost:9090
+  timeout: 30

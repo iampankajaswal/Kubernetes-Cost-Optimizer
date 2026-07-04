@@ -1,0 +1,2 @@
+[console_scripts]
+k8s-cost = k8s_cost_optimizer.main:app
